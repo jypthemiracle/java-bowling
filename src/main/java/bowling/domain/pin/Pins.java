@@ -56,4 +56,8 @@ public class Pins {
 			throw new BowlCountOverThanPinsCountException();
 		}
 	}
+
+	public boolean isKnockedDownAll() {
+		return getKnockedPinCounts() == PIN_LIST_SIZE;
+	}
 }
