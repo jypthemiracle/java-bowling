@@ -6,6 +6,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
 import bowling.domain.pin.frame.BowlCount;
+import bowling.exception.BowlCountOverThanPinsCountException;
 
 public class Pins {
 
@@ -20,13 +21,20 @@ public class Pins {
 		return pins;
 	}
 
-	public int knockedPinCounts() {
+	public int getKnockedPinCounts() {
 		return (int)pins.stream()
 			.filter(Pin::isKnocked)
 			.count();
 	}
 
-	public Pins knockPins(BowlCount bowlCount) {
+	public int getStandingPinCounts() {
+		return (int)pins.stream()
+			.filter(pin -> !pin.isKnocked())
+			.count();
+	}
+
+	public Pins knockPins(final BowlCount bowlCount) {
+		checkKnockCountsWithBowlCount(bowlCount);
 		AtomicInteger number = new AtomicInteger(0);
 		this.pins = pins.stream()
 			.map(pin -> {
@@ -44,9 +52,9 @@ public class Pins {
 		return this;
 	}
 
-	public int getStandingPinCounts() {
-		return (int)pins.stream()
-			.filter(pin -> !pin.isKnocked())
-			.count();
+	public void checkKnockCountsWithBowlCount(final BowlCount bowlCount) {
+		if (bowlCount.isGreaterThan(getStandingPinCounts())) {
+			throw new BowlCountOverThanPinsCountException();
+		}
 	}
 }

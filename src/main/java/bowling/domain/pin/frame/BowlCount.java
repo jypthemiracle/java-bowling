@@ -30,4 +30,8 @@ public class BowlCount {
 	public int getCount() {
 		return count;
 	}
+
+	public boolean isGreaterThan(int knockedPinCounts) {
+		return count > knockedPinCounts;
+	}
 }
