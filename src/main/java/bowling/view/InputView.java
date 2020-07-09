@@ -2,7 +2,7 @@ package bowling.view;
 
 import java.util.Scanner;
 
-import bowling.domain.PlayerName;
+import bowling.domain.player.PlayerName;
 
 public class InputView {
 	private static final String ASK_NAME_MESSAGE = "플레이어 이름은?(3 english letters)";
