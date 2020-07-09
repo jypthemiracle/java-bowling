@@ -2,9 +2,14 @@ package bowling.domain;
 
 import static org.assertj.core.api.Assertions.*;
 
+import java.util.stream.Stream;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 
+import bowling.exception.NameEmptyOrNullException;
 import bowling.exception.NameLengthOverException;
 
 public class PlayerNameTest {
@@ -24,5 +29,18 @@ public class PlayerNameTest {
 		assertThatThrownBy(
 			() -> PlayerName.of(name)
 		).isInstanceOf(NameLengthOverException.class);
+	}
+
+	static Stream<String> blankStrings() {
+		return Stream.of("", "   ", null);
+	}
+
+	@DisplayName("이름에 공백이나 null이 들어오는 경우 오류를 발생시킨다.")
+	@MethodSource("blankStrings")
+	@ParameterizedTest
+	void 이름에_공백이나_NULL이_들어오지_못한다(String name) {
+		assertThatThrownBy(
+			() -> PlayerName.of(name)
+		).isInstanceOf(NameEmptyOrNullException.class);
 	}
 }
