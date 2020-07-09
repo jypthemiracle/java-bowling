@@ -12,8 +12,8 @@ public class Pin {
 		return new Pin(PinState.STANDING);
 	}
 
-	public PinState isKnocked() {
-		return isKnocked;
+	public boolean isKnocked() {
+		return isKnocked == PinState.KNOCKED;
 	}
 
 	public PinState knockOver() {

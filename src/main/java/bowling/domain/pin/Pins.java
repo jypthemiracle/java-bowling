@@ -15,4 +15,10 @@ public class Pins {
 	public List<Pin> getPins() {
 		return pins;
 	}
+
+	public int knockedPinCounts() {
+		return (int)pins.stream()
+			.filter(Pin::isKnocked)
+			.count();
+	}
 }
