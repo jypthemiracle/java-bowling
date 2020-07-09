@@ -2,19 +2,19 @@ package bowling.domain.pin.frame;
 
 import bowling.exception.PlayCountOutOfRangeException;
 
-public class PlayCount {
+public class BowlCount {
 
 	private static final int MIN_COUNT = 0;
 	private static final int MAX_COUNT = 10;
 	private final int count;
 
-	private PlayCount(final int count) {
+	private BowlCount(final int count) {
 		this.count = count;
 	}
 
-	public static PlayCount of(final int count) {
+	public static BowlCount of(final int count) {
 		validRange(count);
-		return new PlayCount(count);
+		return new BowlCount(count);
 	}
 
 	public static void validRange(final int count) {
