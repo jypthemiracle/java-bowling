@@ -57,4 +57,17 @@ public class BowlTest {
 		secondBowl.bowl(secondBowlCount);
 		assertThat(secondBowl.getFrameStatus()).isEqualTo(FrameStatus.MISS);
 	}
+
+	@DisplayName("첫 투구와 둘째 투구를 합쳐 GUTTER를 확인할 수 있다.")
+	@CsvSource({"0, 0"})
+	@ParameterizedTest
+	void 첫_투구와_둘째_투구를_합쳐_거터를_반환한다(int firstCount, int secondCount) {
+		BowlCount firstBowlCount = BowlCount.of(firstCount);
+		BowlCount secondBowlCount = BowlCount.of(secondCount);
+		FirstBowl firstBowl = FirstBowl.of();
+		firstBowl.bowl(firstBowlCount);
+		SecondBowl secondBowl = SecondBowl.of(firstBowl);
+		secondBowl.bowl(secondBowlCount);
+		assertThat(secondBowl.getFrameStatus()).isEqualTo(FrameStatus.GUTTER);
+	}
 }

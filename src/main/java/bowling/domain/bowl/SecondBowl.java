@@ -25,6 +25,10 @@ public class SecondBowl implements Bowl {
 			this.frameStatus = FrameStatus.SPARE;
 			return this;
 		}
+		if (pins.isAllStanding()) {
+			this.frameStatus = FrameStatus.GUTTER;
+			return this;
+		}
 		this.frameStatus = FrameStatus.MISS;
 		return this;
 	}

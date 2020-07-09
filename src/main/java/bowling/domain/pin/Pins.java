@@ -60,4 +60,8 @@ public class Pins {
 	public boolean isKnockedDownAll() {
 		return getKnockedPinCounts() == PIN_LIST_SIZE;
 	}
+
+	public boolean isAllStanding() {
+		return getStandingPinCounts() == PIN_LIST_SIZE;
+	}
 }
