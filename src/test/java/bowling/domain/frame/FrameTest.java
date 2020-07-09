@@ -12,7 +12,8 @@ public class FrameTest {
 	@ValueSource(ints = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10})
 	@ParameterizedTest
 	void 프레임을_생성한다(int frameNumber) {
-		Frame expect = Frame.of(frameNumber);
-		assertThat(expect.getFrameNumber()).isEqualTo(frameNumber);
+		FrameNumber number = FrameNumber.of(frameNumber);
+		Frame expect = NormalFrame.of(number);
+		assertThat(expect.getFrameNumber()).isEqualTo(number.getNumber());
 	}
 }

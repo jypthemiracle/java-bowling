@@ -1,19 +1,10 @@
 package bowling.domain.frame;
 
-public class Frame {
+import java.util.Optional;
 
-	private final FrameNumber frameNumber;
+public interface Frame {
 
-	private Frame(FrameNumber frameNumber) {
-		this.frameNumber = frameNumber;
-	}
+	Optional<Frame> getNext();
 
-	public static Frame of(int number) {
-		FrameNumber frameNumber = FrameNumber.of(number);
-		return new Frame(frameNumber);
-	}
-
-	public int getFrameNumber() {
-		return frameNumber.getNumber();
-	}
+	int getFrameNumber();
 }

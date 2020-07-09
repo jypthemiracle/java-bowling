@@ -26,4 +26,12 @@ public class FrameNumber {
 			throw new FrameNumberOutOfRangeException();
 		}
 	}
+
+	public FrameNumber increaseByOneNumber() {
+		return new FrameNumber(number + MIN_RANGE);
+	}
+
+	public boolean isFinal() {
+		return number == MAX_RANGE;
+	}
 }
