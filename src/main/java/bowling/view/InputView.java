@@ -10,6 +10,6 @@ public class InputView {
 
 	public PlayerName inputPlayerName() {
 		System.out.print(ASK_NAME_MESSAGE);
-		return new PlayerName(Scanner.nextLine());
+		return PlayerName.of(Scanner.nextLine());
 	}
 }
