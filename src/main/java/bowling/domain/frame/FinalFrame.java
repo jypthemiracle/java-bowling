@@ -21,6 +21,6 @@ public class FinalFrame implements Frame {
 
 	@Override
 	public int getFrameNumber() {
-		return 0;
+		return frameNumber.getNumber();
 	}
 }
