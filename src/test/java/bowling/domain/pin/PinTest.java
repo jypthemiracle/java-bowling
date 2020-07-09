@@ -18,7 +18,7 @@ public class PinTest {
 	@Test
 	void 핀을_넘어뜨린다() {
 		Pin expect = Pin.of();
-		expect.knockOver();
+		expect.knockingPin();
 		assertThat(expect.isKnocked()).isEqualTo(PinState.KNOCKED);
 	}
 }

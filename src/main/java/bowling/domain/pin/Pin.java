@@ -12,11 +12,12 @@ public class Pin {
 		return new Pin(PinState.STANDING);
 	}
 
-	public boolean isKnocked() {
-		return isKnocked == PinState.KNOCKED;
+	public PinState knockingPin() {
+		this.isKnocked = PinState.KNOCKED;
+		return isKnocked;
 	}
 
-	public PinState knockOver() {
-		return isKnocked = PinState.KNOCKED;
+	public boolean isKnocked() {
+		return isKnocked == PinState.KNOCKED;
 	}
 }
