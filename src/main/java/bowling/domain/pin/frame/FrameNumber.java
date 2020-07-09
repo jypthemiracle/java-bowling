@@ -1,7 +1,11 @@
 package bowling.domain.pin.frame;
 
+import bowling.exception.FrameNumberOutOfRangeException;
+
 public class FrameNumber {
 
+	private static final int MIN_RANGE = 1;
+	private static final int MAX_RANGE = 10;
 	private final int number;
 
 	private FrameNumber(int number) {
@@ -9,10 +13,17 @@ public class FrameNumber {
 	}
 
 	public static FrameNumber of(int number) {
+		validRange(number);
 		return new FrameNumber(number);
 	}
 
 	public int getNumber() {
 		return number;
+	}
+
+	public static void validRange(final int number) {
+		if (number < MIN_RANGE || number > MAX_RANGE) {
+			throw new FrameNumberOutOfRangeException();
+		}
 	}
 }
