@@ -11,7 +11,7 @@ public class PinsTest {
 	@DisplayName("10개의 Pin을 가진 일급 콜렉션 Pins을 생성할 수 있다.")
 	@Test
 	void 열개의_핀을_갖는다() {
-		Pins expect = Pins.of(new PinGenerator());
+		Pins expect = new PinsGenerator().generate();
 		assertThat(expect.getPins().size()).isEqualTo(PIN_LIST_SIZE);
 	}
 }

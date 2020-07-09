@@ -4,7 +4,7 @@ public class Pin {
 
 	private PinState isKnocked;
 
-	private Pin(final PinState isKnocked) {
+	Pin(final PinState isKnocked) {
 		this.isKnocked = isKnocked;
 	}
 
