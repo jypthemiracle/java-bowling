@@ -1,4 +1,4 @@
-package bowling.domain.pin.frame;
+package bowling.domain.frame;
 
 import bowling.exception.FrameNumberOutOfRangeException;
 

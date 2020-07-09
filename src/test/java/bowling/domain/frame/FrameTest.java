@@ -6,8 +6,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import bowling.domain.pin.frame.Frame;
-
 public class FrameTest {
 
 	@DisplayName("프레임 하나를 생성한다. 각각의 프레임은 번호를 갖는다.")

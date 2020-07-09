@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
-import bowling.domain.pin.frame.BowlCount;
 import bowling.exception.BowlCountOverThanPinsCountException;
 
 public class Pins {
