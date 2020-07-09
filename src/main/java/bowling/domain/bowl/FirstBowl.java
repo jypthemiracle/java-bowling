@@ -19,6 +19,10 @@ public class FirstBowl implements Bowl {
 		return new FirstBowl(new PinsGenerator().generate(), FrameStatus.PLAYING);
 	}
 
+	public static FirstBowl of(Bowl bowl) {
+		return new FirstBowl(bowl.getPins(), bowl.getFrameStatus());
+	}
+
 	public FirstBowl bowl(BowlCount bowlCount) {
 		pins.knockPins(bowlCount);
 		if (pins.isKnockedDownAll()) {
@@ -27,6 +31,10 @@ public class FirstBowl implements Bowl {
 		}
 		this.frameStatus = FrameStatus.PLAYING;
 		return this;
+	}
+
+	public Pins getPins() {
+		return pins;
 	}
 
 	public FrameStatus getFrameStatus() {
