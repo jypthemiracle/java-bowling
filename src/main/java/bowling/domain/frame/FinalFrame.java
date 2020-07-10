@@ -2,6 +2,8 @@ package bowling.domain.frame;
 
 import java.util.Optional;
 
+import bowling.domain.pin.Pins;
+
 public class FinalFrame implements Frame {
 
 	private final FrameNumber frameNumber;
@@ -22,5 +24,15 @@ public class FinalFrame implements Frame {
 	@Override
 	public int getFrameNumber() {
 		return frameNumber.getNumber();
+	}
+
+	@Override
+	public void bowl(Pins pins) {
+		//
+	}
+
+	@Override
+	public boolean isTurnOver() {
+		return false;
 	}
 }

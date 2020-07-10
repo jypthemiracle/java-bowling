@@ -31,7 +31,7 @@ public class Gutter implements State {
 			return first.getKnockedPinCounts() + State.DELIMITER + EXPRESSION;
 		}
 		if (isAllGutter()) {
-			return EXPRESSION + State.DELIMITER + EXPRESSION;
+			return EXPRESSION;
 		}
 		throw new UnsupportedOperationException();
 	}
