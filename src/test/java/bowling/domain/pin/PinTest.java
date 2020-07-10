@@ -11,7 +11,7 @@ public class PinTest {
 	@Test
 	void 핀_객체를_생성한다() {
 		Pin expect = Pin.of();
-		assertThat(expect.isKnocked()).isEqualTo(true);
+		assertThat(expect.isStanding()).isEqualTo(true);
 	}
 
 	@DisplayName("핀을 넘어뜨릴 수 있다.")

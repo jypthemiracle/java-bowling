@@ -23,10 +23,6 @@ public class BowlCount {
 		}
 	}
 
-	public boolean compareKnockingCounts(int knockCounts) {
-		return count == knockCounts;
-	}
-
 	public int getCount() {
 		return count;
 	}
