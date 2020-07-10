@@ -5,12 +5,16 @@ import bowling.domain.pin.Pins;
 public class Gutter implements State {
 
 	private static final String EXPRESSION = "-";
+	private final Pins first;
+	private final Pins second;
 
-	private Gutter() {
+	private Gutter(Pins first, Pins second) {
+		this.first = first;
+		this.second = second;
 	}
 
-	public static Gutter of() {
-		return new Gutter();
+	public static Gutter of(Pins first, Pins second) {
+		return new Gutter(first, second);
 	}
 
 	@Override

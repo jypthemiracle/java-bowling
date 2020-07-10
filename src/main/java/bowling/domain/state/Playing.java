@@ -22,7 +22,7 @@ public class Playing implements State {
 			return Spare.of(first);
 		}
 		if (second.isGutter()) {
-			return Gutter.of();
+			return Gutter.of(first, second);
 		}
 		return Miss.ofPins(first, second);
 	}
