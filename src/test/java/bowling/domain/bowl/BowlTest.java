@@ -8,8 +8,12 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import bowling.domain.frame.FrameStatus;
 import bowling.domain.pin.BowlCount;
+import bowling.domain.state.Gutter;
+import bowling.domain.state.Miss;
+import bowling.domain.state.Playing;
+import bowling.domain.state.Spare;
+import bowling.domain.state.Strike;
 
 public class BowlTest {
 
@@ -19,7 +23,7 @@ public class BowlTest {
 		BowlCount bowlCount = BowlCount.of(10);
 		FirstBowl firstBowl = FirstBowl.of();
 		firstBowl.bowl(bowlCount);
-		assertThat(firstBowl.getFrameStatus()).isEqualTo(FrameStatus.STRIKE);
+		assertThat(firstBowl.getFrameStatus()).isInstanceOf(Strike.class);
 	}
 
 	@DisplayName("첫 투구 때 쓰러진 핀이 1개에서 9개 범위 내부에 있다면 플레이하고 있음을 반환한다.")
@@ -29,7 +33,7 @@ public class BowlTest {
 		BowlCount bowlCount = BowlCount.of(count);
 		FirstBowl firstBowl = FirstBowl.of();
 		firstBowl.bowl(bowlCount);
-		assertThat(firstBowl.getFrameStatus()).isEqualTo(FrameStatus.PLAYING);
+		assertThat(firstBowl.getFrameStatus()).isInstanceOf(Playing.class);
 	}
 
 	@DisplayName("첫 투구와 둘째 투구를 합쳐 SPARE를 확인할 수 있다.")
@@ -42,7 +46,7 @@ public class BowlTest {
 		firstBowl.bowl(firstBowlCount);
 		SecondBowl secondBowl = SecondBowl.of(firstBowl);
 		secondBowl.bowl(secondBowlCount);
-		assertThat(secondBowl.getFrameStatus()).isEqualTo(FrameStatus.SPARE);
+		assertThat(secondBowl.getFrameStatus()).isInstanceOf(Spare.class);
 	}
 
 	@DisplayName("첫 투구와 둘째 투구를 합쳐 MISS를 확인할 수 있다.")
@@ -55,7 +59,7 @@ public class BowlTest {
 		firstBowl.bowl(firstBowlCount);
 		SecondBowl secondBowl = SecondBowl.of(firstBowl);
 		secondBowl.bowl(secondBowlCount);
-		assertThat(secondBowl.getFrameStatus()).isEqualTo(FrameStatus.MISS);
+		assertThat(secondBowl.getFrameStatus()).isInstanceOf(Miss.class);
 	}
 
 	@DisplayName("첫 투구와 둘째 투구를 합쳐 GUTTER를 확인할 수 있다.")
@@ -68,6 +72,6 @@ public class BowlTest {
 		firstBowl.bowl(firstBowlCount);
 		SecondBowl secondBowl = SecondBowl.of(firstBowl);
 		secondBowl.bowl(secondBowlCount);
-		assertThat(secondBowl.getFrameStatus()).isEqualTo(FrameStatus.GUTTER);
+		assertThat(secondBowl.getFrameStatus()).isInstanceOf(Gutter.class);
 	}
 }
