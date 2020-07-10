@@ -1,4 +1,4 @@
-package bowling.domain.bowl;
+package bowling.domain.state;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -7,9 +7,6 @@ import org.junit.jupiter.api.Test;
 
 import bowling.domain.pin.BowlCount;
 import bowling.domain.pin.Pins;
-import bowling.domain.state.FirstBowl;
-import bowling.domain.state.Spare;
-import bowling.domain.state.State;
 
 public class FirstBowlTest {
 

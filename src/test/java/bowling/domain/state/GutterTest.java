@@ -1,4 +1,4 @@
-package bowling.domain.frame;
+package bowling.domain.state;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -8,8 +8,6 @@ import org.junit.jupiter.api.Test;
 import bowling.domain.pin.BowlCount;
 import bowling.domain.pin.Pins;
 import bowling.domain.pin.PinsGenerator;
-import bowling.domain.state.Gutter;
-import bowling.domain.state.State;
 
 public class GutterTest {
 
