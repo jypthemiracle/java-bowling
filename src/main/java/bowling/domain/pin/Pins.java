@@ -12,6 +12,7 @@ import bowling.exception.BowlCountOverThanPinsCountException;
 public class Pins {
 
 	public static final int PIN_LIST_SIZE = 10;
+	public static final Pins GUTTER = new Pins(Collections.emptyList());
 	private List<Pin> pins;
 
 	Pins(final List<Pin> pinList) {

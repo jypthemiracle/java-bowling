@@ -24,6 +24,27 @@ public class Gutter implements State {
 
 	@Override
 	public String toString() {
-		return EXPRESSION;
+		if (isFirstOnlyGutter()) {
+			return EXPRESSION + State.DELIMITER + second.getKnockedPinCounts();
+		}
+		if (isSecondOnlyGutter()) {
+			return first.getKnockedPinCounts() + State.DELIMITER + EXPRESSION;
+		}
+		if (isAllGutter()) {
+			return EXPRESSION + State.DELIMITER + EXPRESSION;
+		}
+		throw new UnsupportedOperationException();
+	}
+
+	private boolean isFirstOnlyGutter() {
+		return first.isGutter() && !second.isGutter();
+	}
+
+	private boolean isSecondOnlyGutter() {
+		return !first.isGutter() && second.isGutter();
+	}
+
+	private boolean isAllGutter() {
+		return first.isGutter() && second.isGutter();
 	}
 }
