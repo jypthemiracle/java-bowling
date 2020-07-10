@@ -19,4 +19,9 @@ public class Strike implements State {
 	public String toString() {
 		return EXPRESSION;
 	}
+
+	@Override
+	public boolean isTurnOver() {
+		return true;
+	}
 }

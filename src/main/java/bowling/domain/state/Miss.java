@@ -25,4 +25,9 @@ public class Miss implements State {
 	public String toString() {
 		return first.getKnockedPinCounts() + State.DELIMITER + second.getKnockedPinCounts();
 	}
+
+	@Override
+	public boolean isTurnOver() {
+		return true;
+	}
 }

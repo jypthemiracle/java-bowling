@@ -11,4 +11,14 @@ public class Ready implements State {
 		}
 		return Playing.of(knockedPins);
 	}
+
+	@Override
+	public boolean isTurnOver() {
+		return false;
+	}
+
+	@Override
+	public String toString() {
+		return "";
+	}
 }

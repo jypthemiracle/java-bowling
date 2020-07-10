@@ -9,4 +9,6 @@ public interface State {
 	State roll(final Pins knockedPins);
 
 	String toString();
+
+	boolean isTurnOver();
 }

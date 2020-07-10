@@ -36,6 +36,11 @@ public class Gutter implements State {
 		throw new UnsupportedOperationException();
 	}
 
+	@Override
+	public boolean isTurnOver() {
+		return true;
+	}
+
 	private boolean isFirstOnlyGutter() {
 		return first.isGutter() && !second.isGutter();
 	}

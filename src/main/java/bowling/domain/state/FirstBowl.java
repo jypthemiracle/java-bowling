@@ -25,4 +25,9 @@ public class FirstBowl implements State {
 		}
 		return Miss.ofPins(first, second);
 	}
+
+	@Override
+	public boolean isTurnOver() {
+		return false;
+	}
 }

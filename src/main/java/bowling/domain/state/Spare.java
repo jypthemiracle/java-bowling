@@ -24,4 +24,9 @@ public class Spare implements State {
 	public String toString() {
 		return first.getKnockedPinCounts() + State.DELIMITER + EXPRESSION;
 	}
+
+	@Override
+	public boolean isTurnOver() {
+		return true;
+	}
 }
