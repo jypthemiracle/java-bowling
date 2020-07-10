@@ -5,7 +5,6 @@ import bowling.domain.pin.Pins;
 public class Playing implements State {
 
 	private final Pins first;
-	private Pins second;
 
 	private Playing(Pins first) {
 		this.first = first;
@@ -17,7 +16,7 @@ public class Playing implements State {
 
 	@Override
 	public State roll(Pins knockedPins) {
-		this.second = knockedPins;
+		Pins second = first.add(knockedPins);
 		if (second.isKnockedDownAll()) {
 			return Spare.of(first);
 		}
