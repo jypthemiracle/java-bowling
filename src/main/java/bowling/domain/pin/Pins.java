@@ -1,8 +1,10 @@
 package bowling.domain.pin;
 
+import static java.util.stream.Collectors.*;
+
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
 import bowling.exception.BowlCountOverThanPinsCountException;
@@ -14,6 +16,10 @@ public class Pins {
 
 	Pins(final List<Pin> pinList) {
 		this.pins = Collections.unmodifiableList(pinList);
+	}
+
+	public static Pins of() {
+		return new PinsGenerator().generate();
 	}
 
 	public List<Pin> getPins() {
@@ -34,21 +40,11 @@ public class Pins {
 
 	public Pins knockPins(final BowlCount bowlCount) {
 		checkKnockCountsWithBowlCount(bowlCount);
-		AtomicInteger number = new AtomicInteger(0);
-		this.pins = pins.stream()
-			.map(pin -> {
-				if (bowlCount.compareKnockingCounts(number.get())) {
-					return pin;
-				}
-				if (!pin.isKnocked()) {
-					pin.knockingPin();
-					number.getAndIncrement();
-					return pin;
-				}
-				return pin;
-			})
-			.collect(Collectors.toList());
-		return this;
+		return pins.stream()
+			.filter(Pin::isStanding)
+			.limit(bowlCount.getCount())
+			.map(Pin::knockingPin)
+			.collect(collectingAndThen(Collectors.toList(), Pins::new));
 	}
 
 	public void checkKnockCountsWithBowlCount(final BowlCount bowlCount) {
@@ -67,5 +63,11 @@ public class Pins {
 
 	public boolean isGutter() {
 		return getKnockedPinCounts() == 0;
+	}
+
+	public Pins add(final Pins knockOverPins) {
+		List<Pin> all = new ArrayList<>(pins);
+		all.addAll(knockOverPins.pins);
+		return new Pins(all);
 	}
 }
