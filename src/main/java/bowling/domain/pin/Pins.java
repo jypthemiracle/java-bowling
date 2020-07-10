@@ -64,4 +64,8 @@ public class Pins {
 	public boolean isAllStanding() {
 		return getStandingPinCounts() == PIN_LIST_SIZE;
 	}
+
+	public boolean isGutter() {
+		return getKnockedPinCounts() == 0;
+	}
 }
