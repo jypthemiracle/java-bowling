@@ -23,7 +23,7 @@ public class Miss implements State {
 
 	@Override
 	public String toString() {
-		return first.getKnockedPinCounts() + State.DELIMITER + second.getKnockedPinCounts();
+		return String.valueOf(second.getKnockedPinCounts());
 	}
 
 	@Override
