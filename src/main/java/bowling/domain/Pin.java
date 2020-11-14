@@ -5,7 +5,6 @@ import java.util.Objects;
 public class Pin {
 	public static final int MAX_PIN_COUNT = 10;
 	private final int count;
-	private final int totalCount;
 	private final ScoreSymbol symbol;
 
 	public Pin(int count) {
@@ -16,10 +15,9 @@ public class Pin {
 		this(count, totalCount, false);
 	}
 
-	private Pin(int count, int totalCount, boolean isFirst){
+	private Pin(int count, int totalCount, boolean isFirst) {
 		this.validate(count, totalCount);
 		this.count = count;
-		this.totalCount = totalCount;
 		this.symbol = initSymbol(totalCount, isFirst);
 	}
 
@@ -66,10 +64,6 @@ public class Pin {
 
 	public int getCount() {
 		return count;
-	}
-
-	public int getTotalCount() {
-		return totalCount;
 	}
 
 	@Override
