@@ -12,6 +12,7 @@ public class FinalFrame implements Frame {
 	private static final int MIN_PITCH_COUNT = 2;
 	private static final int MAX_PITCH_COUNT = 3;
 	private final Pins pins;
+	private Score score;
 
 	public FinalFrame() {
 		this.pins = new Pins();
@@ -22,6 +23,7 @@ public class FinalFrame implements Frame {
 			throw new GameOverException();
 		}
 		pins.pitch(count);
+		calculateScore();
 	}
 
 	public boolean isEnd() {
@@ -32,6 +34,10 @@ public class FinalFrame implements Frame {
 			return true;
 		}
 		return pins.overPitching(MAX_PITCH_COUNT);
+	}
+
+	private void calculateScore() {
+		this.score = new Score(pins.getSum(), 0);
 	}
 
 	@Override
@@ -46,6 +52,11 @@ public class FinalFrame implements Frame {
 	@Override
 	public List<String> getScore() {
 		return pins.getScore();
+	}
+
+	@Override
+	public Score getTotalScore() {
+		return this.score;
 	}
 
 	@Override

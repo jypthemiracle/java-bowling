@@ -38,4 +38,14 @@ public class BowlingGameTest {
 		assertThatThrownBy(() -> bowlingGame.pitch(second))
 			.isInstanceOf(IllegalArgumentException.class);
 	}
+
+	@Test
+	void 점수를_계산할수_있다() {
+		bowlingGame.pitch(3);
+		bowlingGame.pitch(2);
+		bowlingGame.pitch(1);
+		bowlingGame.pitch(1);
+
+		assertThat(bowlingGame.getScore()).containsExactly(5, 2);
+	}
 }

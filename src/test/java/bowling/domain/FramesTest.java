@@ -31,4 +31,14 @@ public class FramesTest {
 		}
 		assertThat(frames.getFrames()).hasSize(10);
 	}
+
+	@Test
+	void 해당_프레임들의_총합_점수를_계산한다() {
+		Frames frames = new Frames();
+		frames.pitch(5);
+		frames.pitch(2);
+		frames.pitch(2);
+		frames.pitch(2);
+		assertThat(frames.getScores()).containsExactly(7, 4);
+	}
 }

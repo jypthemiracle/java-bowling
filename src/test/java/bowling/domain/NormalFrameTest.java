@@ -66,4 +66,12 @@ public class NormalFrameTest {
 		assertThatThrownBy(() -> frame.pitch(2))
 			.isInstanceOf(GameOverException.class);
 	}
+
+	@Test
+	void 해당_프레임의_총합_점수를_계산할수_있다() {
+		NormalFrame frame = NormalFrame.firstFrame();
+		frame.pitch(2);
+		frame.pitch(1);
+		assertThat(frame.getTotalScore()).isEqualTo(new Score(3, 0));
+	}
 }

@@ -7,4 +7,5 @@ public interface Frame {
 	boolean isEnd();
 	Frame next();
 	List<String> getScore();
+	Score getTotalScore();
 }

@@ -71,4 +71,16 @@ public class Pins {
 	public boolean hasEndScore() {
 		return pins.stream().anyMatch(Pin::isEnd);
 	}
+
+	public int getSum() {
+		return pins.stream().mapToInt(Pin::getCount).sum();
+	}
+
+	public Score getTotalScore() {
+		if (getLastPin().getSymbol().equals(ScoreSymbol.STRIKE)
+			|| getLastPin().getSymbol().equals(ScoreSymbol.SPARE)) {
+			return new Score(10, 2);
+		}
+		return new Score(getSum(), 0);
+	}
 }

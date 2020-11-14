@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 import bowling.exception.GameOverException;
 
@@ -65,6 +66,13 @@ public class Frames {
 
 	public List<Frame> getFrames() {
 		return Collections.unmodifiableList(frames);
+	}
+
+	public List<Integer> getScores() {
+		return frames.stream()
+			.map(Frame::getTotalScore)
+			.map(Score::getScore)
+			.collect(Collectors.toList());
 	}
 
 	@Override
