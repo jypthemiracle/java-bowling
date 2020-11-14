@@ -1,6 +1,8 @@
 package bowling.domain;
 
 import java.util.Arrays;
+import java.util.EnumSet;
+import java.util.Set;
 import java.util.function.BiPredicate;
 
 public enum ScoreSymbol {
@@ -9,8 +11,9 @@ public enum ScoreSymbol {
 	GUTTER("-", (score, isFirstTurn) -> score == 0 && !isFirstTurn),
 	MISS("", (score, isFirstTurn) -> true);
 
-	private String value;
-	private BiPredicate<Integer, Boolean> expression;
+	private final String value;
+	private final BiPredicate<Integer, Boolean> expression;
+	public static final Set<ScoreSymbol> tenScore = EnumSet.of(STRIKE, SPARE);
 
 	ScoreSymbol(String value, BiPredicate<Integer, Boolean> expression) {
 		this.value = value;

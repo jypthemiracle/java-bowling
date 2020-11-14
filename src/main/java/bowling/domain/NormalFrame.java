@@ -43,13 +43,7 @@ public class NormalFrame implements Frame {
 	}
 
 	public boolean isEnd() {
-		if (pins.isEmpty()) {
-			return false;
-		}
-		if (pins.isEnd()) {
-			return true;
-		}
-		return pins.overPitching(MAX_PITCH_COUNT);
+		return pins.isEnd() || pins.overPitching(MAX_PITCH_COUNT);
 	}
 
 	public List<Pin> getPins() {

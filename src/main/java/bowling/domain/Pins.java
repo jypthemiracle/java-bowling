@@ -6,7 +6,6 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class Pins {
-	public static final int MAX_PIN_COUNT = 10;
 	private final List<Pin> pins;
 
 	public Pins() {
@@ -33,13 +32,7 @@ public class Pins {
 	}
 
 	public boolean isEnd() {
-		return getLastPin().getTotalCount() == MAX_PIN_COUNT;
-	}
-
-	public int sumAll() {
-		return pins.stream()
-			.mapToInt(Pin::getCount)
-			.sum();
+		return getLastPin().isEnd();
 	}
 
 	public boolean overPitching(int maxPitchCount) {
@@ -54,10 +47,6 @@ public class Pins {
 		return pins.stream()
 			.map(Pin::getSymbolValue)
 			.collect(Collectors.toList());
-	}
-
-	public int size() {
-		return pins.size();
 	}
 
 	public boolean isEmpty() {
@@ -77,5 +66,9 @@ public class Pins {
 	@Override
 	public int hashCode() {
 		return Objects.hash(pins);
+	}
+
+	public boolean hasEndScore() {
+		return pins.stream().anyMatch(Pin::isEnd);
 	}
 }

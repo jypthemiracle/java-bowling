@@ -28,7 +28,7 @@ public class FinalFrame implements Frame {
 		if (pins.isEmpty()) {
 			return false;
 		}
-		if (pins.size() == MIN_PITCH_COUNT && pins.sumAll() < MAX_PIN_COUNT) {
+		if (pins.overPitching(MIN_PITCH_COUNT) && !pins.hasEndScore()) {
 			return true;
 		}
 		return pins.overPitching(MAX_PITCH_COUNT);
